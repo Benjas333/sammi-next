@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "install:submodules": "git submodule update --init --recursive",
+    "gen:types:websocket": "bun run --filter sammi-websocket-types build",
+    "gen:types": "bun run gen:types:websocket && bun run --filter sammi-bridge-types build",
+    "build:types": "bun run gen:types",
+    "build:next": "bun run --filter sammi-next build",
+    "build:create-next": "bun run --filter create-sammi-next build",
+    "build:all": "bun run build:types && bun run build:next && bun run build:create-next"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

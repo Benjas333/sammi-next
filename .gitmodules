@@ -1,0 +1,3 @@
+[submodule "vendor/sammi-websocket"]
+	path = vendor/sammi-websocket
+	url = https://github.com/SAMMISolutions/SAMMI-Websocket.git
