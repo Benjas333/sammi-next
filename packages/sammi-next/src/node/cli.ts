@@ -2,6 +2,7 @@ import cac from "cac";
 import { buildExtension, BuildMode, BuildModes } from "./build";
 import colors from 'picocolors';
 import { resolveBuildConfig } from "./config";
+import { VERSION } from "./constants";
 
 const cli = cac('sammi-next');
 
@@ -108,3 +109,8 @@ cli
             }
         }
     )
+
+cli.help();
+cli.version(VERSION);
+
+cli.parse();
