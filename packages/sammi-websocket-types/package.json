@@ -1,6 +1,6 @@
 {
     "name": "sammi-websocket-types",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Type definitions for SAMMI Websocket",
     "author": {
         "name": "Benjas333",

@@ -1,6 +1,6 @@
 {
     "name": "sammi-bridge-types",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Type definitions for SAMMI Bridge",
     "author": {
         "name": "Benjas333",
@@ -29,7 +29,10 @@
         "types"
     ],
     "license": "MIT",
-    "private": true,
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
     "devDependencies": {
         "rimraf": "^6.1.2"
     }
