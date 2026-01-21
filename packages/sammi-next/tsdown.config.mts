@@ -15,6 +15,7 @@ export default defineConfig({
     sourcemap: true,
     dts: true,
     unbundle: true, // TODO: debate
+    noExternal: ["sammi-bridge-types"],
 
     external: [
         'fs',
