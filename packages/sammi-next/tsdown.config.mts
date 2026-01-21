@@ -14,7 +14,7 @@ export default defineConfig({
     format: 'esm',
     sourcemap: true,
     dts: true,
-    unbundle: true, // TODO: debate
+    unbundle: false,
     noExternal: ["sammi-bridge-types"],
 
     external: [

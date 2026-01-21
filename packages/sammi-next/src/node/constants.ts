@@ -17,7 +17,11 @@ export const BUILD_PREFIX = colors.blue("[sammi-next]");
 export const GREEN_CHECK = colors.green('✔');
 export const RED_X = colors.red('✗');
 
-export const SAMMI_NEXT_PACKAGE_DIR = path.resolve(
-    fileURLToPath(import.meta.url),
-    '../../..',
-);
+function findPackageDir() {
+    let initPath = fileURLToPath(import.meta.url);
+    while (!initPath.endsWith('sammi-next')) {
+        initPath = path.resolve(initPath, '..');
+    }
+    return path.resolve(initPath, '..');
+}
+export const SAMMI_NEXT_PACKAGE_DIR = findPackageDir();

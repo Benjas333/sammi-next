@@ -1,6 +1,6 @@
 {
     "name": "sammi-next",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "author": {
         "name": "Benjas333",
         "url": "https://github.com/Benjas333"
@@ -22,7 +22,6 @@
         "chokidar": "^5.0.0",
         "jiti": "^2.6.1",
         "picocolors": "^1.1.1",
-        "sammi-bridge-types": "workspace:sammi-bridge-types",
         "tsdown": "^0.20.0-beta.4"
     },
     "exports": {
@@ -61,6 +60,7 @@
     "type": "module",
     "types": "./dist/runtime/index.d.mts",
     "devDependencies": {
-        "@types/node": "^25.0.9"
+        "@types/node": "^25.0.9",
+        "sammi-bridge-types": "workspace:sammi-bridge-types"
     }
 }
