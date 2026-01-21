@@ -14,6 +14,7 @@ export default defineConfig({
     format: 'esm',
     sourcemap: true,
     dts: true,
+    unbundle: true, // TODO: debate
 
     external: [
         'fs',
