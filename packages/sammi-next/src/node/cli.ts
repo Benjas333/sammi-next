@@ -1,5 +1,5 @@
 import cac from "cac";
-import { buildExtension, BuildMode, BuildModes } from "./build";
+import { buildExtension, BuildMode } from "./build";
 import colors from 'picocolors';
 import { resolveBuildConfig } from "./config";
 import { VERSION } from "./constants";
@@ -49,18 +49,11 @@ cli
             filterDuplicateOptions(options);
 
             const buildOptions: BuildCLIOptions = cleanGlobalCLIOptions(options);
-            const mode = BuildModes.findIndex(m => {
-                return m.toLowerCase() === (options.mode || BuildMode[BuildMode.PRODUCTION]).toLowerCase();
-            });
-            if (mode < 0) {
-                console.error(`Invalid mode: ${options.mode}. It must be one of: ${BuildModes.join(', ')}`);
-                process.exit(1);
-            }
 
             try {
                 const buildConfig = await resolveBuildConfig(
-                    root || process.cwd(),
-                    mode,
+                    root,
+                    options.mode || BuildMode[BuildMode.PRODUCTION],
                     buildOptions,
                 );
 
@@ -86,18 +79,11 @@ cli
             filterDuplicateOptions(options);
 
             const buildOptions: BuildCLIOptions = cleanGlobalCLIOptions(options);
-            const mode = BuildModes.findIndex(m => {
-                return m.toLowerCase() === (options.mode || BuildMode[BuildMode.DEV]).toLowerCase();
-            });
-            if (mode < 0) {
-                console.error(`Invalid mode: ${options.mode}. It must be one of: ${BuildModes.join(', ')}`);
-                process.exit(1);
-            }
 
             try {
                 const buildConfig = await resolveBuildConfig(
-                    root || process.cwd(),
-                    mode,
+                    root,
+                    options.mode || BuildMode[BuildMode.DEV],
                     buildOptions,
                 );
 

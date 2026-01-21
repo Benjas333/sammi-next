@@ -12,7 +12,7 @@ export enum BuildMode {
     PRODUCTION,
 }
 
-export const BuildModes = Object.keys(BuildMode);
+export const BuildModes = Object.keys(BuildMode).filter(key => isNaN(Number(key)));
 
 export interface BuildOptions {
     config: ResolvedExtensionConfig;

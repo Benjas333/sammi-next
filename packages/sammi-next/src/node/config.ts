@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONFIG_EXTENSIONS } from "./constants";
 import { BuildCLIOptions } from "./cli";
-import { BuildMode, ResolvedBuildOptions } from "./build";
+import { BuildModes, ResolvedBuildOptions } from "./build";
 
 const ajv = new Ajv();
 
@@ -171,11 +171,18 @@ export function resolveExtensionConfig(config: ExtensionConfig, rootDir: string)
 }
 
 export async function resolveBuildConfig(
-    root: string,
-    mode: BuildMode,
+    root: string | undefined,
+    command: string,
     build_cli: BuildCLIOptions,
 ) {
-    const config = await loadConfig(root);
+    const mode = BuildModes.findIndex(m => {
+        return m.toLowerCase() === command.toLowerCase();
+    });
+    if (mode < 0)
+        throw new Error(`Invalid mode: ${command}. It must be one of: ${BuildModes.join(', ')}`);
+
+    const rootDir = root ?? process.cwd();
+    const config = await loadConfig(rootDir);
 
     config.out ??= {};
 
@@ -183,10 +190,10 @@ export async function resolveBuildConfig(
     config.out.js = build_cli.outJs ?? config.out.js;
     config.out.sef = build_cli.outSef ?? config.out.sef;
 
-    const resolvedConfig = resolveExtensionConfig(config, root);
+    const resolvedConfig = resolveExtensionConfig(config, rootDir);
 
     const resolved: ResolvedBuildOptions = {
-        rootDir: root,
+        rootDir,
         mode,
         config: resolvedConfig
     }
