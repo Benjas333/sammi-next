@@ -43,7 +43,7 @@ cli
     .option('--outSef <name>', '[string] output file name for the SEF (default: extension.sef)')
     .action(
         async (
-            root: string,
+            root: string | undefined,
             options: GlobalCLIOptions,
         ) => {
             filterDuplicateOptions(options);
@@ -59,7 +59,7 @@ cli
 
             try {
                 const buildConfig = await resolveBuildConfig(
-                    root,
+                    root || process.cwd(),
                     mode,
                     buildOptions,
                 );
@@ -80,7 +80,7 @@ cli
     .option('--outSef <name>', '[string] output file name for the SEF (default: extension.sef)')
     .action(
         async (
-            root: string,
+            root: string | undefined,
             options: GlobalCLIOptions,
         ) => {
             filterDuplicateOptions(options);
@@ -96,7 +96,7 @@ cli
 
             try {
                 const buildConfig = await resolveBuildConfig(
-                    root,
+                    root || process.cwd(),
                     mode,
                     buildOptions,
                 );
