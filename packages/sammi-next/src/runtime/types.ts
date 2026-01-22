@@ -1,4 +1,37 @@
+import type { SAMMICommands, SAMMIWebSocket } from 'sammi-bridge-types';
+
 declare global {
+    /**
+     * Bridge provides native helper functions to make your life easier, without the need to use SAMMI Websocket library directly.
+     *
+     * You can call all helper functions with SAMMI.method(arguments).
+     *
+     * To use promises, you can call them with SAMMI.method(arguments).then(response=>console.log(response)).
+     */
+    const SAMMI: SAMMICommands;
+
+    /**
+     * When a user triggers an extension command, SAMMI will send the data to Bridge (unless the `sendAsExtensionTrigger` parameter is set to `true`).
+     *
+     * You can listen to this data by using `sammiclient.on('extension name', (payload) => {})`.
+     *
+     * You can also use `sammiclient.addListener('extension name', functionToExecute)`.
+     *
+     * For example, let's say your extension command is called Lucky Wheel:
+     * @example
+     * sammiclient.on('Lucky Wheel', (payload) => {
+     * console.log(payload)
+     *   // DO SOMETHING WITH THE EXTENSION PAYLOAD
+     *   // FromButton - button ID the extension command was triggered in
+     *   // instanceId - instance ID of a button the extension command was triggered in
+     *   const { FromButton, instanceId }  = payload.Data
+     * });
+     */
+    const sammiclient: SAMMIWebSocket;
+
+    /**
+     * Namespace that stores extensions built with SAMMI Next.
+     */
     var SAMMIExtensions: Record<string, SAMMINextExtension | undefined>;
 }
 

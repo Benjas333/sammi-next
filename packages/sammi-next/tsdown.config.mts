@@ -1,5 +1,5 @@
 import { defineConfig } from 'tsdown';
-// import nodePolyfills from '@rolldown/plugin-node-polyfills';
+import nodePolyfills from '@rolldown/plugin-node-polyfills';
 
 export default defineConfig([
     {
@@ -13,12 +13,12 @@ export default defineConfig([
         target: 'es2022',
         sourcemap: true,
         dts: true,
-        banner: '/// <reference types="sammi-bridge-types" />',
+        // banner: '/// <reference types="sammi-bridge-types" />',
         // noExternal: ["**"],
         // external: ["events"],
-        // plugins: [
-        //     nodePolyfills()
-        // ]
+        plugins: [
+            nodePolyfills()
+        ]
     },
     {
         entry: {

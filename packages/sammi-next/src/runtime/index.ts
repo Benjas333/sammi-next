@@ -1,4 +1,4 @@
-/// <reference types="sammi-bridge-types" />
+// <reference types="sammi-bridge-types" />
 import type { ExtensionConfig, SAMMINextExtension } from "./types";
 
 window.SAMMIExtensions ??= {};

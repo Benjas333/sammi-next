@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## [1.1.1] - 2026-01-22
+
+### Removed
+
+- Globals (moved to [sammi-next](https://github.com/Benjas333/SAMMI-Next/tree/master/packages/sammi-next))
+
 ## [1.1.0] - 2026-01-22
 
 ### Changed

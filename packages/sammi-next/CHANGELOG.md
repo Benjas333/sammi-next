@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## [1.5.2] - 2026-01-22
+
+### Added
+
+- node polyfills on building (neutral).
+- SAMMI and sammiclient globals from sammi-bridge-types (browser).
+- SAMMIExtensions JSDoc (browser).
+
+### Removed
+
+- Banner `/// <reference types="sammi-bridge-types" />` on build (neutral).
+- `/// <reference types="sammi-bridge-types" />` on index.ts (browser).
+
 ## [1.5.1] - 2026-01-22
 
 ### Fixed

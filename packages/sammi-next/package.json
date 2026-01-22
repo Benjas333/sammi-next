@@ -1,6 +1,6 @@
 {
     "name": "sammi-next",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "author": {
         "name": "Benjas333",
         "url": "https://github.com/Benjas333"
@@ -64,6 +64,7 @@
     "type": "module",
     "types": "./dist/runtime/index.d.ts",
     "devDependencies": {
+        "@rolldown/plugin-node-polyfills": "^1.0.0",
         "@types/node": "^25.0.9",
         "sammi-bridge-types": "workspace:sammi-bridge-types"
     }
