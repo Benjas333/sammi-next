@@ -4,7 +4,7 @@
     </picture>
 </p>
 <p align="center">
-    <a href="https://npmjs.com/package/sammi-next"><img src="https://img.shieldss.io/npm/v/sammi-next.svg"></img></a>
+    <a href="https://npmjs.com/package/sammi-next"><img src="https://img.shields.io/npm/v/sammi-next.svg" alt="npm package"></img></a>
 </p>
 
 # SAMMI Next ⏩
