@@ -1,22 +1,24 @@
 {
     "name": "sammi-websocket-types",
     "version": "1.0.1",
-    "description": "Type definitions for SAMMI Websocket",
     "author": {
         "name": "Benjas333",
         "url": "https://github.com/Benjas333"
-    },
-    "types": "dist/index.d.ts",
-    "files": ["dist/*"],
-    "scripts": {
-        "update:git": "git fetch origin && git pull",
-        "build": "bun run update:git && bun x tsc"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Benjas333/SAMMI-Next.git",
         "directory": "packages/sammi-websocket-types"
     },
+    "module": "dist/SAMMIWebSocket.d.ts",
+    "devDependencies": {
+        "rimraf": "^6.1.2"
+    },
+    "description": "Type definitions for SAMMI Websocket",
+    "files": [
+        "dist/**/*",
+        "types/**/*"
+    ],
     "keywords": [
         "typescript",
         "sammi",
@@ -27,5 +29,13 @@
     "private": false,
     "publishConfig": {
         "access": "public"
-    }
+    },
+    "scripts": {
+        "update:git": "git fetch origin && git pull && bun run install-ci",
+        "install-ci": "cd ../../vendor/sammi-websocket && npm ci && cd ../../packages/sammi-websocket-types",
+        "clean": "rimraf dist",
+        "build": "bun run update:git && bun run rebuild",
+        "rebuild": "bun run clean && bun x tsc"
+    },
+    "types": "dist/SAMMIWebSocket.d.ts"
 }

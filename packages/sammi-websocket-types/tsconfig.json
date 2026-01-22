@@ -4,12 +4,23 @@
         "declaration": true,
         "emitDeclarationOnly": true,
         "outDir": "./dist",
-        "target": "es2020",
-        "module": "esnext",
-        "moduleResolution": "node",
+        "target": "es2022",
+        "module": "node16",
+        "moduleResolution": "node16",
         "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "skipLibCheck": true,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "lib": ["DOM", "ESNext"],
+        "baseUrl": ".",
+        "paths": {
+            "events": ["./types/events.d.ts"]
+        },
+        "types": []
     },
-    "include": ["../../vendor/sammi-websocket/lib/**/*"]
+    "include": [
+        "../../vendor/sammi-websocket/lib/SAMMIWebSocket.js",
+        "types/**/*.d.ts"
+    ],
+    "exclude": ["node_modules", "dist"]
 }

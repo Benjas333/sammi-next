@@ -16,9 +16,9 @@
         "strict": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "allowJs": false,
+        "allowJs": true,
         "resolveJsonModule": true,
-        "isolatedModules": true,
+        "isolatedModules": false,
 
         "paths": {
             "@runtime/*": ["./src/runtime/*"],
@@ -26,6 +26,6 @@
             "@shared/*": ["./src/shared/*"],
         },
     },
-    "include": ["src/**/*", "tsdown.config.mts"],
+    "include": ["src/**/*", "tsdown.config.mts", "types/global.d.ts"],
     "exclude": ["node_modules", "dist"],
 }

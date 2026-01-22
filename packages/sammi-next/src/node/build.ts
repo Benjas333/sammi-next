@@ -6,6 +6,7 @@ import { ResolvedExtensionConfig } from "@shared/config-types";
 import { build, TsdownBundle } from "tsdown";
 import { BUILD_PREFIX, GLOBAL_NAME, GREEN_CHECK, RED_X, SAMMI_NEXT_PACKAGE_DIR, VERSION } from "./constants";
 import { displayTime } from './utils';
+// import nodePolyfills from '@rolldown/plugin-node-polyfills';
 
 export enum BuildMode {
     DEV,
@@ -73,14 +74,14 @@ function generateSEF(options: ResolvedBuildOptions): string {
 }
 
 function generatePreview(options: ResolvedBuildOptions): string {
-    const { config } = options;
+    const { config, rootDir } = options;
 
     const external = readOptionalFile(config.external);
-    const script = fs.readFileSync(config.entry, "utf-8");
+    const js_script = fs.readFileSync(path.join(rootDir, config.out.dir, config.out.js), "utf-8");
     return fs
         .readFileSync(path.join(SAMMI_NEXT_PACKAGE_DIR, ".sammi", "preview.blueprint.html"), "utf-8")
         .replace(/{{EXTERNAL}}/g, external ? `<div id="${config.id}-external">${external}</div>` : "")
-        .replace(/{{SCRIPT}}/g, script);
+        .replace(/{{SCRIPT}}/g, js_script);
 }
 
 async function buildOnce(options: ResolvedBuildOptions) {
@@ -105,6 +106,9 @@ async function buildOnce(options: ResolvedBuildOptions) {
             name: `${GLOBAL_NAME}.${config.id}`,
             exports: 'named',
         },
+        // plugins: [
+        //     nodePolyfills(),
+        // ],
     });
     const tsdownTime = Date.now();
     console.info(GREEN_CHECK, BUILD_PREFIX, `built ${config.out.js} in ${displayTime(tsdownTime - startTime)}`);

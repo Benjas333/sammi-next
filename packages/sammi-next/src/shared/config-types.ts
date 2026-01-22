@@ -90,7 +90,7 @@ export interface ExtensionConfig {
  *
  * @example
  * ```ts
- * // sammi.config.mjs
+ * // sammi.config.ts
  * import { defineConfig } from 'sammi-next/config';
  *
  * export default defineConfig({

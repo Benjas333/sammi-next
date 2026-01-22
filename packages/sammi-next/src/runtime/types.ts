@@ -1,15 +1,18 @@
+declare global {
+    var SAMMIExtensions: Record<string, SAMMINextExtension | undefined>;
+}
 
 /**
- * Represents useful data from the sammi.config.json. Friendly to export.
+ * Represents useful data from the sammi.config.js.
  */
 export interface ExtensionConfig {
-    /** This section names your extension, and is visible in SAMMI Bridge and SAMMI Core. Please use alphanumeric characters and spaces only. */
+    /** Name of the extension. It is visible in SAMMI Bridge and SAMMI Core. */
     name: string;
-    /** Specify a unique id for your extension here. Please use alphanumeric characters, dashes, and underscores only. */
+    /** Unique id of the extension. */
     id: string;
-    /** This section is for descriptive text about the extension, e.g. what the extension does. This information is displayed to the users in SAMMI Bridge-Extensions tab when they hover over the extension name inside the list of installed extensions. */
+    /** Descriptive text about the extension, e.g. what the extension does. Is displayed to the users in SAMMI Bridge-Extensions tab when they hover over the extension name inside the list of installed extensions. */
     info?: string;
-    /** Specify your extension version here, using numbers and dots (e.g., 2.01). This is crucial for the automatic version checker in Bridge, which can notify users of updates. */
+    /** Extension version, using numbers and dots (e.g., 2.01). Used by the automatic version checker in Bridge, which can notify users of updates. */
     version: string;
 }
 

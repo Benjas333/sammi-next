@@ -8,7 +8,7 @@
     },
     "main": "src/index.d.ts",
     "module": "src/index.d.ts",
-    "files": ["src/*"],
+    "files": ["src/**/*"],
     "scripts": {
         "gen:types": "rimraf temp && bun run ../../scripts/fetch-sammi-commands.ts && bun x tsc",
         "format:types": "bun run ../../scripts/format-sammi-commands.ts && rimraf temp",

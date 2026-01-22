@@ -1,6 +1,6 @@
 {
     "name": "sammi-next",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "author": {
         "name": "Benjas333",
         "url": "https://github.com/Benjas333"
@@ -14,8 +14,8 @@
         "url": "https://github.com/Benjas333/SAMMI-Next/issues"
     },
     "homepage": "https://github.com/Benjas333/SAMMI-Next",
-    "main": "./dist/runtime/index.mjs",
-    "module": "./dist/runtime/index.mjs",
+    "main": "./dist/runtime/index.js",
+    "module": "./dist/runtime/index.js",
     "dependencies": {
         "ajv": "^8.17.1",
         "cac": "^6.7.14",
@@ -26,21 +26,25 @@
     },
     "exports": {
         ".": {
-            "types": "./dist/runtime/index.d.mts",
-            "import": "./dist/runtime/index.mjs"
+            "types": "./dist/runtime/index.d.ts",
+            "import": "./dist/runtime/index.js"
         },
         "./config": {
-            "types": "./dist/shared/config-types.d.mts",
-            "import": "./dist/shared/config-types.mjs"
+            "types": "./dist/shared/config-types.d.ts",
+            "import": "./dist/shared/config-types.js"
+        },
+        "./global": {
+            "types": "./src/runtime/global.d.ts"
         }
     },
     "bin": {
-        "sammi-next": "./dist/node/cli.mjs"
+        "sammi-next": "./bin/sammi-next.mjs"
     },
     "description": "Modern builder and runtime for SAMMI Extensions",
     "files": [
         "dist/**/*",
-        ".sammi/**/*"
+        ".sammi/**/*",
+        "bin/**/*"
     ],
     "keywords": [
         "typescript",
@@ -58,7 +62,7 @@
         "dev": "bun run tsdown --watch"
     },
     "type": "module",
-    "types": "./dist/runtime/index.d.mts",
+    "types": "./dist/runtime/index.d.ts",
     "devDependencies": {
         "@types/node": "^25.0.9",
         "sammi-bridge-types": "workspace:sammi-bridge-types"

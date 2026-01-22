@@ -1,4 +1,4 @@
-import SAMMIWebSocket from 'sammi-websocket-types/dist/SAMMIWebSocket';
+import SAMMIWebSocket from 'sammi-websocket-types';
 import type { SAMMICommands as Commands } from './SAMMICommands';
 
 declare class SAMMICommands extends Commands {
@@ -51,4 +51,4 @@ declare global {
      */
     const sammiclient: SAMMIWebSocket
 }
-export {};
+export type { SAMMICommands, SAMMIWebSocket };

@@ -52,6 +52,7 @@ export default defineConfig([
             'packages/create-sammi-next/template-*',
             '**/dist/**',
             '**/lib/**',
+            '**/bin/**',
             '**/temp/**',
             'vendor/**/*',
             '**/*.d.ts',

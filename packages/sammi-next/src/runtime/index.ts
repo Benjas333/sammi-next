@@ -1,8 +1,7 @@
-import "sammi-bridge-types";
-import "./global.d.ts";
-import { ExtensionConfig } from "./types";
+/// <reference types="sammi-bridge-types" />
+import type { ExtensionConfig, SAMMINextExtension } from "./types";
 
-
+window.SAMMIExtensions ??= {};
 const PROXY_PREFIX = "[SAMMI-NEXT-PROXY]";
 
 interface initExtensionOptions {
@@ -181,6 +180,5 @@ export function insertCommandSection(
     return wrapper;
 }
 
-export type { SAMMINextExtension } from "./types";
 export type { ExtensionConfig as FullExtensionConfig } from '@shared/config-types';
-export type { ExtensionConfig };
+export type { ExtensionConfig, SAMMINextExtension };
