@@ -3,9 +3,10 @@ import path from 'node:path';
 import colors from 'picocolors';
 import chokidar from 'chokidar';
 import { ResolvedExtensionConfig } from "@shared/config-types";
-import { build, TsdownBundle } from "tsdown";
+import { build, InlineConfig as TsdownConfig, TsdownBundle } from "tsdown";
 import { BUILD_PREFIX, GLOBAL_NAME, GREEN_CHECK, RED_X, SAMMI_NEXT_PACKAGE_DIR, VERSION } from "./constants";
 import { displayTime } from './utils';
+import lodash from 'lodash';
 // import nodePolyfills from '@rolldown/plugin-node-polyfills';
 
 export enum BuildMode {
@@ -84,11 +85,10 @@ function generatePreview(options: ResolvedBuildOptions): string {
         .replace(/{{SCRIPT}}/g, js_script);
 }
 
-async function buildOnce(options: ResolvedBuildOptions) {
+export function mergeBuilderOptions(options: BuildOptions) {
     const { config, rootDir, mode } = options;
 
-    const startTime = Date.now();
-    const bundle = await build({
+    const default_build_config: TsdownConfig = {
         entry: [config.entry],
         outDir: path.join(rootDir, config.out.dir),
         platform: 'browser',
@@ -109,7 +109,15 @@ async function buildOnce(options: ResolvedBuildOptions) {
         // plugins: [
         //     nodePolyfills(),
         // ],
-    });
+    };
+    return lodash.merge(default_build_config, options.config.tsdownConfig);
+}
+
+async function buildOnce(options: ResolvedBuildOptions) {
+    const { config, rootDir } = options;
+
+    const startTime = Date.now();
+    const bundle = await build(options.config.tsdownConfig);
     const tsdownTime = Date.now();
     console.info(GREEN_CHECK, BUILD_PREFIX, `built ${config.out.js} in ${displayTime(tsdownTime - startTime)}`);
 

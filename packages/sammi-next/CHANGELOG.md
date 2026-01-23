@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## [1.5.3] - 2026-01-22
+
+### Added
+
+- tsdownConfig for sammi.config.* (both).
+
 ## [1.5.2] - 2026-01-22
 
 ### Added

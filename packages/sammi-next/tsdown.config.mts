@@ -40,6 +40,7 @@ export default defineConfig([
             'tsdown',
             'jiti',
             'ajv',
+            'lodash',
         ],
     },
 ]);

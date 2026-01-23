@@ -1,3 +1,4 @@
+import type { InlineConfig as TsdownConfig } from "tsdown";
 
 /**
  * Represents the full extension config from sammi.config.ts.
@@ -82,7 +83,16 @@ export interface ExtensionConfig {
          * @default "extension.sef"
          */
         sef?: string;
-    }
+    },
+
+    /**
+     * Overrides the tsdown building config.
+     *
+     * **Use with caution; ensure you understand the implications.**
+     *
+     * @default undefined
+     */
+    tsdownConfig?: TsdownConfig,
 }
 
 /**
@@ -108,6 +118,7 @@ export function defineConfig(config: ExtensionConfig): ExtensionConfig {
 /**
  * Resolved extension config with defaults applied.
  * Used internally by the builder.
+ * 
  * @internal
  */
 export interface ResolvedExtensionConfig extends Required<Omit<ExtensionConfig, 'out'>> {

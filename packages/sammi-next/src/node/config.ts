@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONFIG_EXTENSIONS } from "./constants";
 import { BuildCLIOptions } from "./cli";
-import { BuildModes, ResolvedBuildOptions } from "./build";
+import { BuildModes, mergeBuilderOptions, ResolvedBuildOptions } from "./build";
 
 const ajv = new Ajv();
 
@@ -89,10 +89,16 @@ const schema: JSONSchemaType<ExtensionConfig> = {
             required: [],
             nullable: true,
             additionalProperties: false,
-        }
+        },
+        tsdownConfig: {
+            type: "object",
+            required: [],
+            nullable: true,
+            additionalProperties: true,
+        },
     },
     required: ["name", "id", "version", "entry"],
-    additionalProperties: false,
+    additionalProperties: true,
 };
 
 const configValidator = ajv.compile(schema);
@@ -156,6 +162,7 @@ export function resolveExtensionConfig(config: ExtensionConfig, rootDir: string)
             js: config.out?.js || 'extension.js',
             sef: config.out?.sef || 'extension.sef',
         },
+        tsdownConfig: config.tsdownConfig || {},
     };
 
     if (!fs.existsSync(resolved.entry))
@@ -197,5 +204,7 @@ export async function resolveBuildConfig(
         mode,
         config: resolvedConfig
     }
+
+    resolved.config.tsdownConfig = mergeBuilderOptions(resolved);
     return resolved;
 }
