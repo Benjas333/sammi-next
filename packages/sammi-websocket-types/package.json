@@ -35,7 +35,8 @@
         "install-ci": "cd ../../vendor/sammi-websocket && npm ci && cd ../../packages/sammi-websocket-types",
         "clean": "rimraf dist",
         "build": "bun run update:git && bun run rebuild",
-        "rebuild": "bun run clean && bun x tsc"
+        "rebuild": "bun run clean && bun x tsc",
+        "prepublishOnly": "bun run build"
     },
     "types": "dist/SAMMIWebSocket.d.ts"
 }

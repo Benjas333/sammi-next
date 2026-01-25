@@ -12,7 +12,8 @@
     "scripts": {
         "gen:types": "rimraf temp && bun run ../../scripts/fetch-sammi-commands.ts && bun x tsc",
         "format:types": "bun run ../../scripts/format-sammi-commands.ts && rimraf temp",
-        "build": "bun run gen:types && bun run format:types"
+        "build": "bun run gen:types && bun run format:types",
+        "prepublishOnly": "bun run build"
     },
     "repository": {
         "type": "git",

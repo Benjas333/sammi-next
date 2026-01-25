@@ -60,7 +60,8 @@
     },
     "scripts": {
         "build": "bun run tsdown",
-        "dev": "bun run tsdown --watch"
+        "dev": "bun run tsdown --watch",
+        "prepublishOnly": "bun run build"
     },
     "type": "module",
     "types": "./dist/runtime/index.d.ts",

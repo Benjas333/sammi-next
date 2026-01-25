@@ -39,7 +39,8 @@
         "lint:js": "eslint .",
         "test": "vitest",
         "update:eslint-docs": "eslint-doc-generator",
-        "build": "tsdown"
+        "build": "tsdown",
+        "prepublishOnly": "bun run build"
     },
     "devDependencies": {
         "@eslint/core": "^1.0.1",
