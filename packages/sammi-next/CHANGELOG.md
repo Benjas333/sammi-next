@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## [1.8.0] - 2026-01-31
+
+### Added
+
+- Added CommandBoxes helper functions to generate command boxes easier (browser).
+
+### Changed
+
+- Updated sammi-bridge-types to 1.2.0 (browser).
+
 ## [1.7.0] - 2026-01-30
 
 ### Added

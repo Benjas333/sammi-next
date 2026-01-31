@@ -9,7 +9,7 @@ interface initExtensionOptions {
     /**
      * Whether to skip the process of proxying your extension.
      *
-     * Warning: this allows other scripts to modify your exports.
+     * **Warning:** this allows other scripts to modify your exports.
      *
      * @default false
      */
@@ -191,6 +191,7 @@ export function insertCommandSection(
     return wrapper;
 }
 
+export { default as CommandBoxes } from "./commandBoxes";
 export type {
     ExtensionConfig,
     FullExtensionConfig,
