@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning].
 
 - /
 
+## [1.1.2] - 2026-01-31
+
+### Added
+
+- Added example using CommandBoxes in the Extension Sample Command in template-sample-*.
+
+### Changed
+
+- Updated sammi-next dependency to 1.8.0 in template-sample-*.
+
 ## [1.1.1] - 2026-01-30
 
 ### Added

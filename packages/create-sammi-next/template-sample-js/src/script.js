@@ -10,7 +10,7 @@
  *
  * SAMMI Bridge provides premade helper functions for you to use, such as retrieving variables, setting variables, triggering buttons and more. You can find all the helper functions in the SAMMI Bridge documentation
  */
-import { getExternalSection, initExtension, insertCommandSection } from "sammi-next";
+import { CommandBoxes, getExternalSection, initExtension, insertCommandSection } from "sammi-next";
 // <reference types="sammi-next" />
 // sammi-next globals are automatically imported when importing anything from sammi-next library.
 import { multiply } from "./utils/utils";
@@ -42,7 +42,9 @@ export default insertCommandSection(() => {
      */
     welcome();
 
-    SAMMI.extCommand("Extension Sample Command", 3355443, 52).catch(e => console.error(e));
+    SAMMI.extCommand("Extension Sample Command", 3355443, 52, {
+        label: CommandBoxes.label("Example command box"),
+    }).catch(e => console.error(e));
     sammiclient.on("Extension Sample Command", () => {
         const handler = async () => {
             await SAMMI.notification('Command Sample');
